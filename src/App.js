@@ -33,6 +33,7 @@ function App() {
     }
   }
   return (
+
     <div className="App">
       <ScoreCard score={state.count} />
       <div className='pokemon-place' ref={parentRef}>
@@ -54,7 +55,6 @@ function App() {
             <CaughtPokemon imgSrc={item.image} name={item.name} key={index} />)
         }
       </div>
-
     </div>
   );
 }
