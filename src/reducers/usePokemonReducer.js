@@ -1,3 +1,5 @@
+import { isVisible } from "@testing-library/user-event/dist/utils"
+
 export const ACTIONS = {
     COUNT: 'count',
     NEXT: 'next',
@@ -9,6 +11,7 @@ export const INITIAL_STATE = {
     count: 0,
     nextPokemonID: parseInt(Math.floor(Math.random() * 1118)),
     pokemonCaught: [],
+    isVisible: true,
     pokemon: {
         image: '',
         name: ''
@@ -31,7 +34,8 @@ export const usePokemonReducer = (state, action) => {
                 pokemonCaught: [{
                     image: action.payload.image,
                     name: action.payload.name
-                }, ...state.pokemonCaught]
+                }, ...state.pokemonCaught],
+                isVisible: false
             }
         case 'fetch':
             return {
@@ -39,7 +43,8 @@ export const usePokemonReducer = (state, action) => {
                 pokemon: {
                     image: action.payload.sprites.front_default,
                     name: action.payload.name
-                }
+                },
+                isVisible: true
             }
         case 'reset':
             return {

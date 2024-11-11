@@ -1,7 +1,7 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Pokemon from './components/Pokemon';
-import CaughtPoki from './components/CoughtPoki';
+import CaughtPokemon from './components/CaughtPokemon';
 import ScoreCard from './components/ScoreCard';
 import { ACTIONS, INITIAL_STATE, usePokemonReducer } from './reducers/usePokemonReducer';
 import './App.css';
@@ -9,6 +9,9 @@ import './App.css';
 function App() {
 
   const [state, dispatch] = useReducer(usePokemonReducer, INITIAL_STATE);
+  const parentRef = useRef(null);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,31 +26,32 @@ function App() {
     fetchData();
   }, [state.nextPokemonID]);
 
-  const handlePokimonHunted = (pokemonCaught) => {
+  const handlePokemonClick = (pokemonCaught) => {
     if (state.count !== 5) {
       dispatch({ type: ACTIONS.CAUGHT, payload: pokemonCaught })
       dispatch({ type: ACTIONS.COUNT })
       dispatch({ type: ACTIONS.NEXT })
     }
   }
-
   return (
     <div className="App">
-      {/* <p>count: {state.count}</p>
-      <p>next id: {state.nextPokemonID}</p> */}
-      <button onClick={() => dispatch({ type: ACTIONS.RESET })}>RESET</button>
-      <div className='pokimon-place'>
+      <div className='pokemon-place' ref={parentRef}>
         {
-          state.count !== 5 ?
-            <Pokemon data={state.pokemon} handlePokimonHunted={handlePokimonHunted} />
-            :
+          state.count !== 5 && state.isVisible &&
+          <Pokemon data={state.pokemon} handlePokemonClick={handlePokemonClick} parentRef={parentRef} />
+        }
+        {
+          state.count === 5 &&
+          <div className='winner-banner'>
             <h1>You won</h1>
+            <button type='button' onClick={() => dispatch({ type: ACTIONS.RESET })}>RESET</button>
+          </div>
         }
       </div>
       <ScoreCard score={state.count} />
       <div className='jail'>
         {state.pokemonCaught.map((item, index) =>
-          <CaughtPoki imgSrc={item.image} name={item.name} key={index} />)
+          <CaughtPokemon imgSrc={item.image} name={item.name} key={index} />)
         }
       </div>
 

@@ -1,32 +1,23 @@
 
-import { useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
-export default function Pokemon({ data, handlePokimonHunted }) {
+export default function Pokemon({ data, handlePokemonClick, parentRef }) {
+    const [position, setPosition] = useState({ height: 0, width: 0 });
 
-    var div = document.getElementsByTagName('body')[0];
-    var winWidth = div.innerWidth;
-    var winHeight = div.innerHeight;
-
-    // randomTop = getRandomNumber(0, winHeight);
-    // randomLeft = getRandomNumber(0, winWidth);
-
-    function getRandomNumber(min, max) {
-        return Math.random() * (max - min) + min;
-    }
-    const imagePosition = useRef({
-        position: 'absolute',
-        top: getRandomNumber(0, winHeight),
-        left: getRandomNumber(0, winWidth),
-        // transform: 'translate(-50%, -50%)'
-    });
+    useEffect(() => {
+        if (parentRef.current) {
+            const { clientWidth, clientHeight } = parentRef.current;
+            setPosition({ height: clientHeight, width: clientWidth })
+        }
+    }, []);
 
     return (
         <>
             <img src={data.image}
-                alt="Pokimon"
-                className={`pokimon`}
-                style={imagePosition}
-                onClick={() => handlePokimonHunted(data)} />
+                alt="Pokemon"
+                className={`pokemon`}
+                style={{ top: `${Math.floor(Math.random() * (position.height - 100)) + 0}px`, left: `${Math.floor(Math.random() * (position.width - 100)) + 0}px` }}
+                onClick={() => handlePokemonClick(data)} />
         </>
 
     )

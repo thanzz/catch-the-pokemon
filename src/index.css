@@ -8,18 +8,22 @@ body {
   background-color: #D0E8C5;
 }
 
-.pokimon {
+.pokemon {
   cursor: pointer;
   min-height: 5px;
   min-width: 5px;
-  animation: fade-in 1s;
+  animation: fade-in 1.5s;
+  position: absolute;
+  z-index: 1;
 }
 
 .jail {
   position: fixed;
   bottom: 0;
   display: flex;
-  border: 1px solid;
+  width: 100%;
+  /* flex-wrap: wrap; */
+  justify-content: center;
 }
 
 .fade-in-out {
@@ -27,6 +31,51 @@ body {
   animation: fade-in 1s ease-in forwards, fade-out 4s 1s ease-out forwards;
 }
 
+.captive {
+  animation: fade-in 1s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.pokemon-place {
+  position: relative;
+  width: 99vw;
+  height: 80vh;
+}
+.pokemon-card{
+  font-size: .8em;
+  color: #fff;
+}
+.pokemon-card img{
+  width: 60%;
+}
+@media screen and (min-width: 800px) {
+  .pokemon-card{
+    margin:0 10px;
+    font-size: 1em;
+  }
+  .pokemon-card img{
+    width: 100%;
+  }
+}
+.score-card {
+  color: #fff;
+  font-size: 6em;
+  font-style: bold;
+  position: fixed;
+  top: 10px;
+  left:10px
+}
+
+.winner-banner{
+  width: 100vw;
+  height: 100vh;
+  background-color: #006989;
+  position: fixed;
+  z-index: 1;
+  animation: fade-in 2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -45,22 +94,4 @@ body {
   100% {
     opacity: 1;
   }
-}
-
-.captive {
-  animation: fade-in 1s;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  margin: 10px;
-}
-
-.pokimon-place {
-  border: 1px solid red;
-  position: relative;
-  height: 80vh;
-}
-
-.score-card {
-  color: #fff;
-  font-size: 6em;
-  font-style: bold;
 }
