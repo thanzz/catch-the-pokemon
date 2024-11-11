@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #D0E8C5;
+  background-color: #DFF2EB;
 }
 
 .pokemon {
@@ -22,8 +22,10 @@ body {
   bottom: 0;
   display: flex;
   width: 100%;
-  /* flex-wrap: wrap; */
+  background-color: #B9E5E8;
   justify-content: center;
+  padding: 10px 0;
+  height: 10vh;
 }
 
 .fade-in-out {
@@ -31,51 +33,99 @@ body {
   animation: fade-in 1s ease-in forwards, fade-out 4s 1s ease-out forwards;
 }
 
-.captive {
-  animation: fade-in 1s;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
 .pokemon-place {
   position: relative;
   width: 99vw;
   height: 80vh;
 }
-.pokemon-card{
+
+.pokemon-card {
   font-size: .8em;
-  color: #fff;
+  color: #1a1818;
+  animation: fade-in 1s;
 }
-.pokemon-card img{
+
+.pokemon-card img {
   width: 60%;
 }
-@media screen and (min-width: 800px) {
-  .pokemon-card{
-    margin:0 10px;
-    font-size: 1em;
-  }
-  .pokemon-card img{
-    width: 100%;
-  }
+
+.pokemon-card p {
+  margin: 0;
+  text-align: center;
 }
+
+
 .score-card {
   color: #fff;
   font-size: 6em;
   font-style: bold;
   position: fixed;
   top: 10px;
-  left:10px
+  left: 10px
 }
 
-.winner-banner{
+.winner-banner {
   width: 100vw;
-  height: 100vh;
-  background-color: #006989;
+  background-color: #7AB2D3;
   position: fixed;
   z-index: 1;
+  height: 88vh;
   animation: fade-in 2s;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
+.winner-banner h1 {
+  color: #FFDC7F;
+  font-size: 3em;
+}
+
+.winner-banner button {
+  font-size: 3em;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.winner-banner button:hover {
+  text-shadow: 1px 1px 1px #000,
+    3px 3px 5px rgb(170, 170, 179);
+  transform: scale(1.1);
+  /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); */
+}
+
+@media screen and (min-width: 800px) {
+  .pokemon-card {
+    font-size: 1em;
+    font-weight: 400;
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 1em;
+  }
+
+  .pokemon-card img {
+    width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  }
+
+  .pokemon-card h1 {
+    font-size: 6em;
+  }
+
+  .jail {
+    height: 15vh;
+  }
+
+  .winner-banner {
+    height: 83vh;
+  }
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0;

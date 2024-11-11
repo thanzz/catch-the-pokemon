@@ -1,10 +1,14 @@
-# Getting Started with Create React App
+# Getting Started with Catch The Pokemon
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In "Catch the Pokémon," random Pokémon will appear on the screen, and the player has to catch 
+them by clicking on them. Each time a Pokémon is caught, it appears in the “Caught Pokémon” area 
+on the screen. The player wins the game once they catch 5 Pokémon.
 
 ## Available Scripts
+### `npm install`
 
-In the project directory, you can run:
+Check out the repo and run `npm install` to install the project dependencies. 
+Once the dependencies are installed, in the project directory, you can run:
 
 ### `npm start`
 

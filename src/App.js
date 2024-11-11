@@ -4,7 +4,6 @@ import Pokemon from './components/Pokemon';
 import CaughtPokemon from './components/CaughtPokemon';
 import ScoreCard from './components/ScoreCard';
 import { ACTIONS, INITIAL_STATE, usePokemonReducer } from './reducers/usePokemonReducer';
-import './App.css';
 
 function App() {
 
@@ -35,6 +34,7 @@ function App() {
   }
   return (
     <div className="App">
+      <ScoreCard score={state.count} />
       <div className='pokemon-place' ref={parentRef}>
         {
           state.count !== 5 && state.isVisible &&
@@ -48,10 +48,10 @@ function App() {
           </div>
         }
       </div>
-      <ScoreCard score={state.count} />
       <div className='jail'>
-        {state.pokemonCaught.map((item, index) =>
-          <CaughtPokemon imgSrc={item.image} name={item.name} key={index} />)
+        {
+          state.pokemonCaught.map((item, index) =>
+            <CaughtPokemon imgSrc={item.image} name={item.name} key={index} />)
         }
       </div>
 

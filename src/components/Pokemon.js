@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 export default function Pokemon({ data, handlePokemonClick, parentRef }) {
     const [position, setPosition] = useState({ height: 0, width: 0 });
-
     useEffect(() => {
         if (parentRef.current) {
             const { clientWidth, clientHeight } = parentRef.current;
