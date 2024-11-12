@@ -1,7 +1,5 @@
-import { isVisible } from "@testing-library/user-event/dist/utils"
 
 export const ACTIONS = {
-    COUNT: 'count',
     NEXT: 'next',
     CAUGHT: 'caught',
     FETCH: 'fetch',
@@ -20,10 +18,6 @@ export const INITIAL_STATE = {
 
 export const usePokemonReducer = (state, action) => {
     switch (action.type) {
-        case 'count':
-            return {
-                ...state, count: state.count === 5 ? state.count = 5 : state.count + 1
-            }
         case 'next':
             return {
                 ...state, nextPokemonID: parseInt(Math.floor(Math.random() * 1000))

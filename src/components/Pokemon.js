@@ -15,7 +15,7 @@ export default function Pokemon({ data, handlePokemonClick, parentRef }) {
             <img src={data.image}
                 alt="Pokemon"
                 className={`pokemon`}
-                style={{ top: `${Math.floor(Math.random() * (position.height - 100)) + 0}px`, left: `${Math.floor(Math.random() * (position.width - 100)) + 0}px` }}
+                style={{ top: `${Math.floor(Math.random() * (position.height - 100))}px`, left: `${Math.floor(Math.random() * (position.width - 100))}px` }}
                 onClick={() => handlePokemonClick(data)} />
         </>
 

@@ -11,23 +11,26 @@ function App() {
   const parentRef = useRef(null);
   const score = state.pokemonCaught.length;
 
+  //fetch new Pokemon
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${state.nextPokemonID}`);
+        //set the pokemon details
         dispatch({ type: ACTIONS.FETCH, payload: response.data })
       } catch (error) {
         // console.error(error).
+        //if error try another pokemon
         dispatch({ type: ACTIONS.NEXT })
       }
     };
     fetchData();
-  }, [state.nextPokemonID]);
+  }, [state.nextPokemonID]);//every time new ID generates, a new pokemon is fetched
 
   const handlePokemonClick = (pokemonCaught) => {
+    //callback function from <Pokemon/>  which sets the caught pokemon, increases the count and fetch the next pokemon
     if (score !== state.winningScore) {
       dispatch({ type: ACTIONS.CAUGHT, payload: pokemonCaught })
-      dispatch({ type: ACTIONS.COUNT })
       dispatch({ type: ACTIONS.NEXT })
     }
   }
