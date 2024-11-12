@@ -9,9 +9,9 @@ export const ACTIONS = {
 }
 export const INITIAL_STATE = {
     count: 0,
-    nextPokemonID: parseInt(Math.floor(Math.random() * 1118)),
+    nextPokemonID: parseInt(Math.floor(Math.random() * 1000)),
     pokemonCaught: [],
-    isVisible: true,
+    isVisible: false,
     pokemon: {
         image: '',
         name: ''
