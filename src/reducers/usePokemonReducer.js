@@ -8,7 +8,7 @@ export const ACTIONS = {
     RESET: 'reset'
 }
 export const INITIAL_STATE = {
-    count: 0,
+    winningScore: 10,
     nextPokemonID: parseInt(Math.floor(Math.random() * 1000)),
     pokemonCaught: [],
     isVisible: false,
@@ -31,10 +31,10 @@ export const usePokemonReducer = (state, action) => {
         case 'caught':
             return {
                 ...state,
-                pokemonCaught: [{
+                pokemonCaught: [...state.pokemonCaught, {
                     image: action.payload.image,
                     name: action.payload.name
-                }, ...state.pokemonCaught],
+                }],
                 isVisible: false
             }
         case 'fetch':

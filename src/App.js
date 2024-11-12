@@ -9,8 +9,7 @@ function App() {
 
   const [state, dispatch] = useReducer(usePokemonReducer, INITIAL_STATE);
   const parentRef = useRef(null);
-
-
+  const score = state.pokemonCaught.length;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +25,7 @@ function App() {
   }, [state.nextPokemonID]);
 
   const handlePokemonClick = (pokemonCaught) => {
-    if (state.count !== 5) {
+    if (score !== state.winningScore) {
       dispatch({ type: ACTIONS.CAUGHT, payload: pokemonCaught })
       dispatch({ type: ACTIONS.COUNT })
       dispatch({ type: ACTIONS.NEXT })
@@ -35,14 +34,14 @@ function App() {
   return (
 
     <div className="App">
-      <ScoreCard score={state.count} />
+      <ScoreCard score={score} winningScore={state.winningScore} />
       <div className='pokemon-place' ref={parentRef}>
         {
-          state.count !== 5 && state.isVisible &&
+          score !== state.winningScore && state.isVisible &&
           <Pokemon data={state.pokemon} handlePokemonClick={handlePokemonClick} parentRef={parentRef} />
         }
         {
-          state.count === 5 &&
+          score === state.winningScore &&
           <div className='winner-banner'>
             <h1>You won</h1>
             <button type='button' onClick={() => dispatch({ type: ACTIONS.RESET })}>RESET</button>
